@@ -52,6 +52,7 @@ npm install
 ```env
 MONGO_URL=your_mongo_connection_string
 JWT_SECRET=your_secret_key
+PORT=port_number
 ```
 
 4. **Run Backend:**
