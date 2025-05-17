@@ -14,7 +14,7 @@ server.use((0, cors_1.default)());
 server.use(express_1.default.json());
 (0, connect_1.default)().then((connectMessage) => {
     console.log(connectMessage);
-    server.use(mainRoutes_1.default);
+    server.use("/api/v1", mainRoutes_1.default);
     server.listen(port, () => {
         console.log("Server started on port: ", port);
     });
