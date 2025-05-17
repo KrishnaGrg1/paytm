@@ -10,7 +10,7 @@ server.use(express.json());
 
 connectToMongoDB().then((connectMessage) => {
   console.log(connectMessage);
-  server.use(mainRoutes)
+ server.use("/api/v1",mainRoutes)
   server.listen(port, () => {
     console.log("Server started on port: ", port);
   });
