@@ -61,7 +61,36 @@ const updateProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         }
     }
 });
+const filterUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const filter = req.query.filter || "";
+        const existingUsers = yield User_1.default.find({
+            $or: [
+                { firstName: { $regex: filter, $options: "i" } },
+                { lastName: { $regex: filter, $options: "i" } }
+            ]
+        });
+        res.json({
+            users: existingUsers.map(user => ({
+                username: user.username,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                _id: user._id
+            }))
+        });
+    }
+    catch (e) {
+        if (e instanceof Error) {
+            console.error(e.message);
+            res.status(400).json({ message: e.message });
+        }
+        else {
+            res.status(500).json({ message: "Unexpected error has occurred" });
+        }
+    }
+});
 const ProfileController = {
-    updateProfile
+    updateProfile,
+    filterUser
 };
 exports.default = ProfileController;
