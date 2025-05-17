@@ -7,11 +7,9 @@ const joi_1 = __importDefault(require("joi"));
 const userValidation = {
     register: {
         body: joi_1.default.object().keys({
-            username: joi_1.default.string().alphanum().min(2).max(50).required().messages({
+            username: joi_1.default.string().email().required().messages({
                 "string.empty": "Username is required",
-                "string.min": "Username must be at least 3 characters long",
-                "string.max": "Username must not exceed 50 characters",
-                "string.alphanum": "Username must contain only letters and numbers"
+                "string.email": "Username must be valid email address"
             }),
             password: joi_1.default.string().min(8).max(50).required().messages({
                 "string.empty": "Password is required",
@@ -32,13 +30,9 @@ const userValidation = {
     },
     login: {
         body: joi_1.default.object().keys({
-            username: joi_1.default.string().alphanum().min(2).max(50).required().messages({
-                "string.base": "Username must be string",
+            username: joi_1.default.string().email().required().messages({
                 "string.empty": "Username is required",
-                "string.min": "Username must be atleast 2 characters long",
-                "string.max": "Username mustnot exceed 50 characters long",
-                "string.alphanum": "Username must contains only number and string",
-                "any.required": "Username is required"
+                "string.email": "Username must be valid email address"
             }),
             password: joi_1.default.string().min(8).max(50).required().messages({
                 "string.base": "Password must be string",

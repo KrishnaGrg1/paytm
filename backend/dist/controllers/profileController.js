@@ -66,12 +66,20 @@ const filterUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const filter = req.query.filter || "";
         const existingUsers = yield User_1.default.find({
             $or: [
-                { firstName: { $regex: filter, $options: "i" } },
-                { lastName: { $regex: filter, $options: "i" } }
+                {
+                    firstName: {
+                        "$regex": filter
+                    }
+                },
+                {
+                    lastName: {
+                        "$regex": filter
+                    }
+                }
             ]
         });
         res.json({
-            users: existingUsers.map(user => ({
+            users: existingUsers.map((user) => ({
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,

@@ -16,6 +16,7 @@ const User_1 = __importDefault(require("../models/User"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const Ienv_1 = __importDefault(require("../Ienv"));
+const Account_1 = __importDefault(require("../models/Account"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { username, password, firstName, lastName } = req.body;
@@ -34,8 +35,14 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             firstName,
             lastName
         });
+        const userId = newUser._id;
+        const userBalance = yield Account_1.default.create({
+            userId,
+            balance: 1 + Math.random() * 10000
+        });
         res.status(201).json({
             user: newUser,
+            userBalance,
             message: "User created successfully"
         });
         return;

@@ -3,9 +3,11 @@ import env from "./Ienv";
 import connectToMongoDB from "./connect";
 import mainRoutes from "./routes/mainRoutes";
 import cors from 'cors'
+import bodyParser from "body-parser";
 const server = express();
 const port = env.PORT || "8001";
 server.use(cors())
+
 server.use(express.json());
 
 connectToMongoDB().then((connectMessage) => {

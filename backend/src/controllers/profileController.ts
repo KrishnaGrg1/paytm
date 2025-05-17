@@ -54,13 +54,21 @@ const filterUser = async (req: IRequest, res: Response): Promise<void> => {
 
     const existingUsers = await User.find({
       $or: [
-        { firstName: { $regex: filter, $options: "i" } },
-        { lastName: { $regex: filter, $options: "i" } }
+        {
+          firstName: {
+            "$regex": filter
+          }
+        },
+        {
+          lastName: {
+           "$regex": filter
+          }
+        }
       ]
     });
 
     res.json({
-      users: existingUsers.map(user => ({
+      users: existingUsers.map((user) => ({
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
@@ -76,7 +84,6 @@ const filterUser = async (req: IRequest, res: Response): Promise<void> => {
     }
   }
 };
-
 
 const ProfileController = {
   updateProfile,

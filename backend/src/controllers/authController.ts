@@ -3,6 +3,9 @@ import User from "../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import env from "../Ienv";
+import Account from "../models/Account";
+
+
 const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { username, password, firstName, lastName } = req.body;
@@ -22,9 +25,15 @@ const register = async (req: Request, res: Response): Promise<void> => {
       firstName,
       lastName
     });
+    const userId=newUser._id
+    const userBalance=await Account.create({
+      userId,
+      balance:1+Math.random()*10000
+    })
 
     res.status(201).json({
       user: newUser,
+      userBalance,
       message: "User created successfully"
     });
     return;
