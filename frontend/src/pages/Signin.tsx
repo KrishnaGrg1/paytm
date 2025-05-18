@@ -11,8 +11,12 @@ import { Input } from '../components/ui/input'
 import { Button } from '../components/ui/button'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/ui/NavBar'
+import { useState } from 'react'
 
 const Signin = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
     return (
         <>
             <Navbar />
@@ -29,12 +33,16 @@ const Signin = () => {
 
                         <div>
                             <Label htmlFor="email">Email</Label>
-                            <Input id="email" placeholder="Enter your email" type="email" />
+                            <Input id="email" placeholder="Enter your email" onChange={e => {
+                                setEmail(e.target.value)
+                            }} type="email" />
                         </div>
 
                         <div>
                             <Label htmlFor="password">Password</Label>
-                            <Input id="password" placeholder="Enter your password" type="password" />
+                            <Input id="password" placeholder="Enter your password" type="password" onChange={e=>{
+                                setPassword(e.target.value)
+                            }} />
                         </div>
                     </CardContent>
 
