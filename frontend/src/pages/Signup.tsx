@@ -105,7 +105,7 @@ const Signup = () => {
             <Button variant="outline" onClick={handleSignup}>
               Create Account
             </Button>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm font-semibold text-muted-foreground">
               Already have an account?{' '}
               <Link to="/signin" className="text-blue-600 hover:underline">Sign In</Link>
             </p>

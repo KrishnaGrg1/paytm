@@ -90,9 +90,9 @@ const Signin = () => {
 
                     <CardFooter className="flex flex-col gap-3">
                         <Button variant="outline" onClick={handleSignIn}>Log In</Button>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground font-semibold">
                             Already have an account?{' '}
-                            <Link to="/signup" className="text-blue-600 hover:underline">Sign In</Link>
+                            <Link to="/signup" className="text-blue-600 hover:underline ">Sign In</Link>
                         </p>
                     </CardFooter>
                 </Card>
