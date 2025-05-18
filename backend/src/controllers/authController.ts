@@ -34,6 +34,7 @@ const register = async (req: Request, res: Response): Promise<void> => {
     res.status(201).json({
       user: newUser,
       userBalance,
+      success:true,
       message: "User created successfully"
     });
     return;
@@ -74,7 +75,8 @@ const login = async (req: Request, res: Response): Promise<void> => {
     res.status(200).json({
       message: "Login Successfully",
       data,
-      token
+      token,
+      success:true
     });
     return;
   } catch (e) {

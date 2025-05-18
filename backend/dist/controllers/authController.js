@@ -43,6 +43,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(201).json({
             user: newUser,
             userBalance,
+            success: true,
             message: "User created successfully"
         });
         return;
