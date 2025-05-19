@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ export const Users = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -37,7 +37,7 @@ export const Users = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        const data=response.data 
+        const data = response.data
         setUsers(data.users)
       } catch (err: any) {
         setError(
@@ -105,7 +105,7 @@ function User({ user }: UserProps) {
       </div>
 
       <Button
-      className="bg-blue-500 text-white cursor-pointer hover:bg-blue-600"
+        className="bg-blue-500 text-white cursor-pointer hover:bg-blue-600"
         onClick={() => navigate(`/send?id=${user._id}&name=${user.firstName}`)}
       >
         Send Money

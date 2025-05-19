@@ -80,7 +80,8 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(200).json({
             message: "Login Successfully",
             data,
-            token
+            token,
+            success: true
         });
         return;
     }
