@@ -19,7 +19,7 @@ const Balance = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const [balance, setBalance] = useState(0);
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     const fetchUserDetails = async () => {
         const jwtToken = localStorage.getItem('token');
         if (!jwtToken) {
@@ -29,7 +29,7 @@ const Balance = () => {
         }
 
         try {
-            const response = await axios.get("http://localhost:8001/api/v1/account/balance", {
+            const response = await axios.get(`${apiUrl}/api/v1/account/balance`, {
                 headers: {
                     Authorization: `Bearer ${jwtToken}`,
                 },

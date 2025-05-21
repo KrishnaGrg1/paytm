@@ -15,7 +15,7 @@ export default function NavbarDashboard() {
     const [firstName, setFirstName] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
         const fetchUserDetails = async () => {
             const jwtToken = localStorage.getItem("token");
@@ -26,7 +26,7 @@ export default function NavbarDashboard() {
             }
 
             try {
-                const response = await axios.get("http://localhost:8001/api/v1/account/balance", {
+                const response = await axios.get(`${apiUrl}/api/v1/account/balance`, {
                     headers: {
                         Authorization: `Bearer ${jwtToken}`,
                     },

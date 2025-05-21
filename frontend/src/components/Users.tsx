@@ -20,7 +20,7 @@ export const Users = () => {
   const [loading, setLoading] = useState(false);
 
 
-
+ const apiUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
@@ -32,7 +32,7 @@ export const Users = () => {
           return;
         }
         const response = await axios.get<UserData>(
-          "http://localhost:8001/api/v1/user/bulk",
+         `${apiUrl}/api/v1/user/bulk`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
