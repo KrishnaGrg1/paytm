@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 
 import {
   Card,
@@ -28,9 +28,9 @@ const Signup = () => {
       setError("Please fill in all the fields.")
       return
     }
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     try {
-      const response = await axios.post(`http://localhost:8001/api/v1/user/signup`, {
+      const response = await axios.post(`${apiUrl}/api/v1/user/signup`, {
         firstName,
         lastName,
         username: email,

@@ -11,7 +11,7 @@ function useQuery() {
 }
 
 const SendMoney = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = import.meta.env.VITE_API_URL;
     const query = useQuery();
     const navigate = useNavigate();
     const name = query.get("name");
@@ -34,7 +34,7 @@ const SendMoney = () => {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            
+
             alert("Transfer successful!");
             navigate('/dashboard');
         } catch (e: any) {
@@ -56,8 +56,8 @@ const SendMoney = () => {
                     </CardHeader>
                     <CardContent>
                         <div>
-                            <Input 
-                                type="number" 
+                            <Input
+                                type="number"
                                 placeholder="Enter money to send...."
                                 onChange={e => setAmount(parseInt(e.target.value))}
                                 min="1"
@@ -66,8 +66,8 @@ const SendMoney = () => {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button 
-                            variant="outline" 
+                        <Button
+                            variant="outline"
                             className="bg-green-400 hover:bg-green-500 w-full"
                             onClick={handleSubmitMoney}
                             disabled={loading}
