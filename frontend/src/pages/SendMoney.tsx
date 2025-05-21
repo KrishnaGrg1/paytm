@@ -11,6 +11,7 @@ function useQuery() {
 }
 
 const SendMoney = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const query = useQuery();
     const navigate = useNavigate();
     const name = query.get("name");
@@ -25,7 +26,7 @@ const SendMoney = () => {
         }
         setLoading(true);
         try {
-            await axios.post('http://localhost:8001/api/v1/account/transferMoney', {
+            await axios.post(`${apiUrl}/api/v1/account/transferMoney`, {
                 amount,
                 to: id
             }, {

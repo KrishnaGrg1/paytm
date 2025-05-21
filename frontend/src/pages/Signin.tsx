@@ -14,25 +14,26 @@ import Navbar from '../components/ui/NavBar'
 import { useState } from 'react'
 import axios from 'axios'
 const Signin = () => {
-
     interface SignInResponse {
         message: string,
         data: string,
         token: string,
         sucess: boolean
     }
-
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
     const [error, setError] = useState<string>('')
     const navigate=useNavigate()
     const handleSignIn = async () => {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        console.log("URL",apiUrl)
         if (!email || !password) {
             setError("Fill up all the fields")
             return
         }
         try {
-            const response = await axios.post(`http://localhost:8001/api/v1/user/signin`, {
+            const response = await axios.post(`${apiUrl}/api/v1/user/signin`, {
                 username:email,
                 password
             })
